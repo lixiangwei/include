@@ -62,9 +62,9 @@ var include = function (window) {
 	//解析传进来什么东西
 	function jsParser(item) {
 		switch (type(item)) {
-		case "Array':
+		case "Array":
 			return loadScript(item[0], item[1]);
-		case "String':
+		case "String":
 			return loadScript(item);
 		}
 	};
