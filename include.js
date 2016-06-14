@@ -30,7 +30,7 @@ var include = function (window) {
 			script.async = "async";
 			script.src = url;
 			script.onload = function () {
-				callback();
+				if(callback)callback();
 			};
 			script.onerror = function (err) {
 				console.warn("load script error", err);
