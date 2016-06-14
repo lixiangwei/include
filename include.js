@@ -75,7 +75,7 @@ var include = function (window) {
 				jsParser(item.shift());
 			}
 		},
-		css: function() {
+		css: function(item) {
 			while(item.length) {
 				loadCss(item.shift());
 			}
