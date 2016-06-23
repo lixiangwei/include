@@ -30,9 +30,11 @@ var include = function (window) {
 			script.async = "async";
 			script.src = url;
 			script.onload = function () {
+				releaseMemory(script);
 				if(callback)callback();
 			};
 			script.onerror = function (err) {
+				releaseMemory(script);
 				console.warn("load script error", err);
 			};
 		}else {
@@ -52,7 +54,14 @@ var include = function (window) {
 		link.type = "text/css";
 		link.href = url;
 		document.getElementsByTagName("head")[0].appendChild(link);
-	}
+	};
+	
+	//避免内存泄露
+	function releaseMemory(script) {
+		script.onload = script.onerror = script.onreadystatechange = null;
+		document.body.removeChild(script)
+		script = null;
+	};
 	
 	// 判断对象类型
 	function type(obj) {
@@ -75,7 +84,7 @@ var include = function (window) {
 				jsParser(item.shift());
 			}
 		},
-		css: function(item) {
+		css: function() {
 			while(item.length) {
 				loadCss(item.shift());
 			}
@@ -83,3 +92,4 @@ var include = function (window) {
 	}
 
 }(window);
+
