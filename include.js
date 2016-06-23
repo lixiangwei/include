@@ -30,11 +30,11 @@ var include = function (window) {
 			script.async = "async";
 			script.src = url;
 			script.onload = function () {
-				releaseMemory(script);
+				releaseMemory();
 				if(callback)callback();
 			};
 			script.onerror = function (err) {
-				releaseMemory(script);
+				releaseMemory();
 				console.warn("load script error", err);
 			};
 		}else {
@@ -46,6 +46,13 @@ var include = function (window) {
 			}
 		}
 		document.body.appendChild(script);
+		
+		//避免内存泄露
+		function releaseMemory() {
+			script.onload = script.onerror = script.onreadystatechange = null;
+			document.body.removeChild(script)
+			script = null;
+		};
 	};
 	
 	function loadCss(url) {
@@ -54,13 +61,6 @@ var include = function (window) {
 		link.type = "text/css";
 		link.href = url;
 		document.getElementsByTagName("head")[0].appendChild(link);
-	};
-	
-	//避免内存泄露
-	function releaseMemory(script) {
-		script.onload = script.onerror = script.onreadystatechange = null;
-		document.body.removeChild(script)
-		script = null;
 	};
 	
 	// 判断对象类型
@@ -92,4 +92,3 @@ var include = function (window) {
 	}
 
 }(window);
-
