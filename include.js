@@ -41,7 +41,7 @@ var include = function (window) {
 			// IE8及之前
 			script.onreadystatechange = function () {
 				if (/loaded|complete/.test(script.readyState)) {
-					resolve(script)
+					if(callback)callback();
 				}
 			}
 		}
