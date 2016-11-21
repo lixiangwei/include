@@ -5,7 +5,7 @@
 include.js([[url,callback], ...]);
 
 加载多个脚本
-include.js([url, ...]);
+include.js([url1, url2, ...]);
 
 加载样式
 include.css([url]);
