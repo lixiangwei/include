@@ -1,5 +1,5 @@
 # include
-按需加载脚本样式
+该脚本用于按需加载脚本样式。
 
 加载多组脚本并设置回调
 include.js([[url,callback], ...]);
