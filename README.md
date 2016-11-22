@@ -10,4 +10,4 @@ include.js([url1, url2, ...]);
 加载样式
 include.css([url]);
 
-优点就是不需要像seajs那样修改模块化现有代码
+优点就是不需要像seajs那样修改模块化现有代码 :)
