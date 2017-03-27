@@ -8,8 +8,8 @@ include.js([[url,callback], ...]);
 include.js([url1, url2, ...]);
 
 加载样式（usage)：
-include.css([url]);    
-  
+include.css([url]);  
+
 注意是通过动态生成script和link标签来加载的
 优点就是不需要像seajs那样修改模块化现有代码 :)
 
